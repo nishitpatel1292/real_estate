@@ -14,7 +14,6 @@ const Home = ({ propertiesForRent, propertiesForSale }) => {
   // console.log(propertiesForRent);
   return (
     <>
-      <Navbar/>
       <Banner
         purpose={'RENT A HOME'}
         title1={'Rental Homes for'}
@@ -40,7 +39,7 @@ const Home = ({ propertiesForRent, propertiesForSale }) => {
         imageUrl='https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008'
   
       />
-      <Flex flexWrap='wrap' justifyContent='center'>
+      <Flex flexWrap='wrap' justifyContent='center' >
       {propertiesForSale.map((property) => <Property property={property} key={property.id} />)}
     </Flex>
 
