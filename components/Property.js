@@ -13,7 +13,7 @@ const Property = ({ property: { coverPhoto, price, rentFrequency, rooms, title, 
       <Box> 
         <Image src={coverPhoto.url } width={400} height={260} style={{height:'260px'}} />
       </Box>
-      <Box w='full'  maxW='sm' borderWidth='1px' padding={4} paddingInline='5px'>
+      <Box w='full'  maxW='sm' borderWidth='1px' padding={4} paddingInline='5px' borderColor={'gray.300'}>
         <Flex paddingTop='2' alignItems='center' justifyContent='space-between'>
           <Flex alignItems='center'>
             <Box paddingRight='3' color='green.400'>{isVerified && <GoVerified />}</Box>

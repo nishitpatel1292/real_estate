@@ -8,6 +8,8 @@ import { useMediaQuery } from "@chakra-ui/react";
 
 
 
+
+
 const Navbar = () => {
   const [isMobile] = useMediaQuery("(max-width: 600px)");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,9 +20,9 @@ const Navbar = () => {
   const Hover = {
     backgroundColor: '#f8f9fa',
     borderColor: '#dadce0',
-    borderRadius:'5%',
+    borderRadius: '5%',
     boxShadow: 'rgba(0, 0, 0, .1) 2px 2px 2px'
-    
+
   };
   return (
     <>
@@ -28,7 +30,7 @@ const Navbar = () => {
 
 
         <Box fontSize='3xl' color='blue.400' fontWeight='bold' paddingLeft='2em' alignSelf='center'>
-          <Link href='/'>WebEstate</Link>
+          <Link href='/' passHref>WebEstate</Link>
         </Box>
         <Spacer />
         {isMobile && (<Menu>
@@ -46,18 +48,20 @@ const Navbar = () => {
             &#9776;
           </MenuButton>
           <MenuList>
+            <Link href='/search' passHref>
+              <MenuItem  >
+                <BsSearch style={{ width: '14px', height: '14px', marginRight: '8px' }} />
+                <span>Search</span>
+              </MenuItem>
+            </Link>
             <MenuItem>
-              <BsSearch style={{ width: '14px', height: '14px', marginRight: '8px' }} />
-              <span>Search</span>
+              <Link href='/' passHref>Home</Link>
             </MenuItem>
             <MenuItem>
-              <Link href='/'>Home</Link>
+              <Link href='/' passHref>Buy Property</Link>
             </MenuItem>
             <MenuItem>
-              <Link href='/'>Buy Property</Link>
-            </MenuItem>
-            <MenuItem>
-              <Link href='/'>Rent Property</Link>
+              <Link href='/' passHref>Rent Property</Link>
             </MenuItem>
           </MenuList>
         </Menu>)}
@@ -66,11 +70,16 @@ const Navbar = () => {
 
         {!isMobile && (
           <>
-            <Box fontSize='l' color='black.400' fontWeight='medium' alignSelf='center' marginLeft='2em' display="flex" padding='0.2em 0.5em' flexDirection='row' alignItems='center' gap='2' _hover={{ color: 'blue.400', cursor: 'pointer', ...Hover }}>
+            <Box onClick={() => {
+              window.location.href = '/search';
+            }}
+              fontSize='l' color='black.400' fontWeight='medium' alignSelf='center' display="flex" padding='0.2em 0.5em' flexDirection='row' alignItems='center' gap='2' marginLeft='2em' _hover={{ color: 'blue.400', cursor: 'pointer', ...Hover }}>
+
               <BsSearch style={{ width: '14px', height: '14px', marginTop: '4px' }} /> <span>Search</span>
+
             </Box>
             <Box fontSize='l' color='black.400' fontWeight='medium' alignSelf='center' padding='0.2em 0.5em' marginLeft='2em' _hover={{ color: 'blue.400', cursor: 'pointer', ...Hover }}>
-              <Link href='/about'>Home</Link>
+              <Link href='/'>Home</Link>
             </Box>
             <Box fontSize='l' color='black.400' fontWeight='medium' alignSelf='center' marginLeft='2em' padding='0.2em 0.5em' _hover={{ color: 'blue.400', cursor: 'pointer', ...Hover }}>
               <Link href='/'>Buy Property</Link>
