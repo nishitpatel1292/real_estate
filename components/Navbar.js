@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Menu, MenuButton, MenuList, MenuItem, IconButton, Flex, Box, Spacer } from '@chakra-ui/react';
 import { BsSearch } from 'react-icons/bs';
-import { FiKey } from 'react-icons/fi';
 import {  useState } from 'react';
 import { useMediaQuery } from "@chakra-ui/react";
 
@@ -56,10 +55,10 @@ const Navbar = () => {
               <Link href='/' passHref>Home</Link>
             </MenuItem>
             <MenuItem>
-              <Link href='/' passHref>Buy Property</Link>
+              <Link href='/search?purpose=for-sale' passHref>Buy Property</Link>
             </MenuItem>
             <MenuItem>
-              <Link href='/' passHref>Rent Property</Link>
+              <Link href='/search?purpose=for-rent' passHref>Rent Property</Link>
             </MenuItem>
           </MenuList>
         </Menu>)}
@@ -80,10 +79,10 @@ const Navbar = () => {
               <Link href='/'>Home</Link>
             </Box>
             <Box fontSize='l' color='black.400' fontWeight='medium' alignSelf='center' marginLeft='2em' padding='0.2em 0.5em' _hover={{ color: 'blue.400', cursor: 'pointer', ...Hover }}>
-              <Link href='/'>Buy Property</Link>
+              <Link href='/search?purpose=for-sale' passHref>Buy Property</Link>
             </Box>
             <Box fontSize='l' color='black.400' fontWeight='medium' alignSelf='center' padding='0.2em 0.5em' marginInline='2rem' _hover={{ color: 'blue.400', cursor: 'pointer', ...Hover }}>
-              <Link href='/'>Rent Property</Link>
+              <Link href='/search?purpose=for-rent' passHref>Rent Property</Link>
             </Box>
           </>
         )}

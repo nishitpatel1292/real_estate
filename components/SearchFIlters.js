@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Flex, Select, Box, Text, Input, Spinner, Icon, Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { MdCancel } from 'react-icons/md';
@@ -6,8 +6,7 @@ import Image from 'next/image';
 
 import { filterData, getFilterValues } from '../utils/filterData';
 import { baseUrl, fetchApi } from '../utils/fetchApi';
-import house from 'assets/images/house.jpg'
-
+import house from 'assets/images/house.jpg';
 
 export default function SearchFilters() {
   const [filters] = useState(filterData);
@@ -17,17 +16,34 @@ export default function SearchFilters() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  // Function to reset all filters
+  const resetFilters = () => {
+    const resetQuery = {};
+
+    // Reset each filter value to its initial state
+    filters.forEach((filter) => {
+      resetQuery[filter.queryName] = '';
+    });
+
+    // Reset the search term and location data
+    setSearchTerm('');
+    setLocationData(null);
+
+    // Push the reset query to the router
+    router.push({ pathname: router.pathname, query: resetQuery });
+  };
+
   const searchProperties = (filterValues) => {
     const path = router.pathname;
     const { query } = router;
 
-    const values = getFilterValues(filterValues)
+    const values = getFilterValues(filterValues);
 
     values.forEach((item) => {
-      if(item.value && filterValues?.[item.name]) {
-        query[item.name] = item.value
+      if (item.value && filterValues?.[item.name]) {
+        query[item.name] = item.value;
       }
-    })
+    });
 
     router.push({ pathname: path, query: query });
   };
@@ -49,7 +65,12 @@ export default function SearchFilters() {
     <Flex bg='gray.100' p='4' justifyContent='center' flexWrap='wrap'>
       {filters?.map((filter) => (
         <Box key={filter.queryName}>
-          <Select onChange={(e) => searchProperties({ [filter.queryName]: e.target.value })} placeholder={filter.placeholder} w='fit-content' p='2' >
+          <Select
+            onChange={(e) => searchProperties({ [filter.queryName]: e.target.value })}
+            placeholder={filter.placeholder}
+            w='fit-content'
+            p='2'
+          >
             {filter?.items?.map((item) => (
               <option value={item.value} key={item.value}>
                 {item.name}
@@ -58,10 +79,17 @@ export default function SearchFilters() {
           </Select>
         </Box>
       ))}
+
       <Flex flexDir='column'>
-        <Button onClick={() => setShowLocations(!showLocations)} border='1px' borderColor='gray.200' marginTop='2' >
+        <Button
+          onClick={() => setShowLocations(!showLocations)}
+          border='1px'
+          borderColor='gray.200'
+          marginTop='2'
+        >
           Search Location
         </Button>
+
         {showLocations && (
           <Flex flexDir='column' pos='relative' paddingTop='2'>
             <Input
@@ -94,14 +122,14 @@ export default function SearchFilters() {
                       setSearchTerm(location.name);
                     }}
                   >
-                    <Text cursor='pointer' bg='gray.200' p='2' borderBottom='1px' borderColor='gray.100' >
+                    <Text cursor='pointer' bg='gray.200' p='2' borderBottom='1px' borderColor='gray.100'>
                       {location.name}
                     </Text>
                   </Box>
                 ))}
                 {!loading && !locationData?.length && (
-                  <Flex justifyContent='center' alignItems='center' flexDir='column' marginTop='5' marginBottom='5' >
-                    <Image src={house} width={200} height={150}/>
+                  <Flex justifyContent='center' alignItems='center' flexDir='column' marginTop='5' marginBottom='5'>
+                    <Image src={house} width={200} height={150} />
                     <Text fontSize='xl' marginTop='3'>
                       Waiting to search!
                     </Text>
@@ -112,6 +140,9 @@ export default function SearchFilters() {
           </Flex>
         )}
       </Flex>
+      <Button margin='2' border='1px' borderColor='gray.200' onClick={resetFilters}>
+        Reset
+      </Button>
     </Flex>
   );
 }
