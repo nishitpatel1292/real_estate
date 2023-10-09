@@ -27,7 +27,7 @@ const Navbar = () => {
       <Flex p='2' borderBottom='1px' borderColor='gray.100'>
 
         <Box fontSize='3xl' color='blue.400' fontWeight='bold' paddingLeft='2em' alignSelf='center' >
-          <Link href='/' passHref>WebEstate </Link>
+          <Link href='/' passHref>RealEstate </Link>
         </Box>
         <Spacer />
         {isMobile && (<Menu>
