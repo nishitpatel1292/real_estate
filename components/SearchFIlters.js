@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 import { filterData, getFilterValues } from '../utils/filterData';
 import { baseUrl, fetchApi } from '../utils/fetchApi';
-import house from '@/assets/images/house.png';
+// import house from '@/assets/images/house.png';
 
 export default function SearchFilters() {
   const [filters] = useState(filterData);
@@ -129,7 +129,6 @@ export default function SearchFilters() {
                 ))}
                 {!loading && !locationData?.length && (
                   <Flex justifyContent='center' alignItems='center' flexDir='column' marginTop='5' marginBottom='5'>
-                    <Image src={house} width={200} height={150} />
                     <Text fontSize='xl' marginTop='3'>
                       Waiting to search!
                     </Text>
