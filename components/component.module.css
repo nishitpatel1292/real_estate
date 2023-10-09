@@ -1,0 +1,8 @@
+
+
+.slideImageContainer{
+  display: flex !important;
+  justify-content: center !important;
+  padding: 0;
+  height: 200px;
+}
