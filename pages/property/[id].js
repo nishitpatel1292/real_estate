@@ -9,8 +9,8 @@ import { baseUrl, fetchApi } from '../../utils/fetchApi';
 import ImageScrollbar from '../../components/ImageScrollbar';
 
 const PropertyDetails = ({ propertyDetails: { price, rentFrequency, rooms, title, baths, area, agency, isVerified, description, type, purpose, furnishingStatus, amenities, photos } }) => (
-    <Box margin='auto' p='8'>
-        <Box>
+    <Box margin='auto' p='8' background='rgb(180,180,180)'>
+        <Box px='6'>
             {photos && <ImageScrollbar data={photos} />}
         </Box>
         <Box w='full' p='6'>
