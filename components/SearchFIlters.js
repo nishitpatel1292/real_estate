@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 import { filterData, getFilterValues } from '../utils/filterData';
 import { baseUrl, fetchApi } from '../utils/fetchApi';
-import house from 'assets/images/house.jpg';
+import house from '@/assets/images/house.png';
 
 export default function SearchFilters() {
   const [filters] = useState(filterData);
