@@ -9,7 +9,7 @@ import millify from 'millify';
 
 const Property = ({ property: { coverPhoto, price, rentFrequency, rooms, title, baths, area, agency, isVerified, externalID  } }) => (
   <Link href={`/property/${externalID}`} passHref>
-    <Flex flexWrap='wrap' w='400px' p='5' paddingTop='0px' justifyContent='flex-start' cursor='pointer' >
+    <Flex flexWrap='wrap' maxWidth='400px' p='5' paddingTop='0px' justifyContent='flex-start' cursor='pointer' >
       <Box> 
         <Image src={coverPhoto.url } width={400} height={260} style={{height:'260px'}}  />
       </Box>
